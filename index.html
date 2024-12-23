@@ -19,45 +19,48 @@
         height: 3rem;
         box-sizing: border-box;
         backdrop-filter: blur(10px);
+        border: none;
       }
       #input {
-        border: none;
+        border: solid;
         padding: 0 1rem;
         flex-grow: 1;
         border-radius: 2rem;
         margin: 0.25rem;
+        max-width: 500;
       }
       #input:focus {
         outline: none;
       }
       #form > botton {
         background: #333;
-        border: none;
         padding: 0 1rem;
         margin: 0.25rem;
         border-radius: 3px;
         outline: none;
-        color: #fff;
+        color: rgb(218, 196, 168);
       }
       #messages {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        border: solid;
       }
       #messages > li {
         padding: 0.5rem 1rem;
       }
       #messages > li:nth-child(odd) {
-        background: #ffefef;
+        background: rgb(216, 203, 203);
       }
     </style>
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <input type="text" id="myname" placeholder="Enter your Name Here">
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
+    <ul id="messages"></ul>
     <script>
       var socket = io()
       var messages = document.getElementById('messages')
@@ -68,7 +71,8 @@
         e.preventDefault()
         console.log(input.value)
         if (input.value) {
-          socket.emit('chat message', input.value)
+          let myname=document.getElementById("myname").value
+          socket.emit('chat message', myname+": "+input.value)
           input.value = ''
         }
       })

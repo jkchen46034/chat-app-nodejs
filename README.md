@@ -12,7 +12,7 @@ a user connected
 got it
 a user connected
 got it
-message: Hello @everyone this is john from VA.
-message: @John this is Tom from NC.
+message: JK: Hello there
+message: cyy: @JK can you come pick me up
 ```
 
